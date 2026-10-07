@@ -21,6 +21,8 @@ dependencies = [
     "tqdm",
     "matplotlib",
     "Pillow",
+    "pyarrow",
+    "huggingface-hub",
 ]
 
 [tool.setuptools.packages.find]

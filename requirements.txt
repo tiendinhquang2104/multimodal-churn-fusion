@@ -10,3 +10,5 @@ google-api-python-client
 tqdm
 matplotlib
 Pillow
+pyarrow
+huggingface-hub
