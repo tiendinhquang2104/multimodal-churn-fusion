@@ -2,7 +2,7 @@
 
 from copy import deepcopy
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import yaml
 
@@ -66,3 +66,39 @@ def resolve_dataset_paths(
     if dataset.get("archive") is not None:
         paths["archive"] = folder / relative_path(dataset["archive"], "archive")
     return paths
+
+
+def find_dataset_paths(
+    config: dict[str, Any], candidate_roots: Iterable[str | Path]
+) -> tuple[Path, dict[str, Path]]:
+    """Find a configured dataset under one of the mounted filesystem roots."""
+    attempted: list[Path] = []
+    for candidate in candidate_roots:
+        root = Path(candidate).expanduser()
+        paths = resolve_dataset_paths(config, root)
+        target = paths.get("archive", paths["folder"])
+        attempted.append(target)
+        exists = target.is_file() if "archive" in paths else target.is_dir()
+        if exists:
+            return root, paths
+
+    source_url = config.get("dataset", {}).get("folder_url")
+    checked = "\n".join(f"- {path}" for path in attempted)
+    raise FileNotFoundError(
+        f"Dataset was not found at any mounted path:\n{checked}"
+        + (f"\nShared folder: {source_url}" if source_url else "")
+    )
+
+
+def find_drive_dataset_paths(
+    config: dict[str, Any], my_drive_root: str | Path,
+    datasets_root_override: str | Path | None = None,
+) -> tuple[Path, dict[str, Path]]:
+    """Find a dataset in the thesis folder or common My Drive shortcut locations."""
+    my_drive = Path(my_drive_root)
+    roots = ([datasets_root_override] if datasets_root_override is not None else [
+        my_drive / "Project Master Thesis" / "Data" / "Datasets",
+        my_drive / "Datasets",
+        my_drive,
+    ])
+    return find_dataset_paths(config, roots)

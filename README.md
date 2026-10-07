@@ -50,7 +50,7 @@ pip install -e .
 
 Run `notebooks/00_setup_colab.ipynb`, then `notebooks/05a_build_feature_table.ipynb`. The first feature run downloads the public MiniLM and CLIP model weights through their libraries. The H&M dataset is **not** downloaded by this project.
 
-The H&M ZIP currently lives below `/content/drive/MyDrive/Project Master Thesis/Data/Datasets` at `02_hm_fashion/h-and-m-personalized-fashion-recommendations.zip`. Set the two Drive roots in the notebook if your mounted account or output location differs.
+The H&M ZIP is in the [shared `02_hm_fashion` folder](https://drive.google.com/drive/folders/1xFkfs4Jcm_fH1dOZFX73PTYs0K7O-N97) (about 30.8 GB). A Drive URL is not a mounted filesystem path. In Colab, authorize the account that can open that folder. If the folder is only under **Shared with me**, use **Organize → Add shortcut → My Drive** in Google Drive. The notebooks look for the ZIP under `MyDrive/Project Master Thesis/Data/Datasets/02_hm_fashion`, `MyDrive/Datasets/02_hm_fashion`, and `MyDrive/02_hm_fashion`. If your shortcut is elsewhere, set `DATASETS_ROOT_OVERRIDE` to the parent of `02_hm_fashion` in each notebook. A failed `drive.mount()` must be resolved before reading the ZIP; reconnect the Colab runtime and reauthorize the correct account.
 
 The equivalent command is:
 

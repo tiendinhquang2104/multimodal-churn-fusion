@@ -2,5 +2,6 @@
 dataset:
   name: hm
   description: H&M Personalized Fashion Recommendations data
+  folder_url: https://drive.google.com/drive/folders/1xFkfs4Jcm_fH1dOZFX73PTYs0K7O-N97
   relative_path: 02_hm_fashion
   archive: h-and-m-personalized-fashion-recommendations.zip
