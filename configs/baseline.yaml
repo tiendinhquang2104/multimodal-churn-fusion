@@ -1,6 +1,10 @@
 dataset:
   name: hm
 
+drive:
+  shared_project_folder_id: 1YHWbumTiVjEZ1evW-TV_ZctoUh3CABR8
+  shortcut_name: Project Master Thesis
+
 model:
   common_embedding_dim: 128
 

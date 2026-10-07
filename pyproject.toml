@@ -17,6 +17,7 @@ dependencies = [
     "pandas",
     "numpy",
     "pyyaml",
+    "google-api-python-client",
     "tqdm",
     "matplotlib",
     "Pillow",
