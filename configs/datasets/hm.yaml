@@ -1,0 +1,6 @@
+# Paths are relative to the runtime's datasets_root (see Colab setup).
+dataset:
+  name: hm
+  description: H&M Personalized Fashion Recommendations data
+  relative_path: 02_hm_fashion
+  archive: h-and-m-personalized-fashion-recommendations.zip

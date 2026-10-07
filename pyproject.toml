@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multimodal-churn-fusion"
+version = "0.1.0"
+description = "Research foundation for multimodal customer churn prediction"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "torchvision",
+    "transformers",
+    "sentence-transformers",
+    "scikit-learn",
+    "pandas",
+    "numpy",
+    "pyyaml",
+    "tqdm",
+    "matplotlib",
+    "Pillow",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

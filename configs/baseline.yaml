@@ -1,0 +1,48 @@
+dataset:
+  name: hm
+
+model:
+  common_embedding_dim: 128
+
+transaction_encoder:
+  type: transformer
+  input_dim: 3
+  model_dim: 128
+  num_heads: 4
+  num_layers: 2
+  max_sequence_length: 32
+  output_dim: 128
+
+text_encoder:
+  type: minilm
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  output_dim: 128
+  freeze: true
+
+image_encoder:
+  type: clip
+  model_name: openai/clip-vit-base-patch32
+  output_dim: 128
+  freeze: true
+
+fusion:
+  type: concat
+
+classifier:
+  hidden_dims: [256, 64]
+  dropout: 0.2
+
+features:
+  max_customers: 16
+  transaction_batch_size: 16
+  text_batch_size: 32
+  image_batch_size: 8
+
+training:
+  batch_size: 256
+  epochs: 20
+  learning_rate: 0.001
+  seed: 42
+
+evaluation:
+  metrics: [roc_auc, pr_auc, f1, precision, recall]

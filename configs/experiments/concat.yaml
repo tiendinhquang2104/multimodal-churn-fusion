@@ -1,0 +1,5 @@
+experiment:
+  id: B1
+  modalities: [transaction, text, image]
+fusion:
+  type: concat

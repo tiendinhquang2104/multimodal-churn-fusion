@@ -1,0 +1,3 @@
+experiment:
+  id: B0-T
+  modalities: [transaction]

@@ -1,0 +1,5 @@
+experiment:
+  id: B0-TX
+  modalities: [transaction, text]
+fusion:
+  type: concat
